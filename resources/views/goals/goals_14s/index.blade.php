@@ -1,0 +1,436 @@
+@extends('layouts.template', ['title' => __('เป้าหมายที่ 14 ระบบยุติธรรมชุมชน')])
+
+@section('content')
+@include('goals.goals_14s.header', [
+'title' => __('เป้าหมายที่ 14 ระบบยุติธรรมชุมชน') ,
+])
+
+
+
+<style>
+    .dataTables_filter {
+        display: none;
+    }
+
+    .label_float {
+        margin-top: 10px;
+        /* float: left; */
+    }
+
+    span {
+        display: block;
+        overflow: hidden;
+        padding: 0px 4px 0px 6px;
+    }
+
+    .border_top {
+        border-top-style: solid;
+    }
+
+    .border_bottom {
+        border-bottom-style: solid;
+    }
+
+</style>
+<div class="container-fluid mt--7">
+
+
+
+    <form action="store" method="post" enctype="multipart/form-data">
+        @csrf
+
+        <div class="row">
+            <div class="col">
+                <div class="card shadow">
+                    <div class="card-header border-0">
+                        <div class="row">
+                            <div class="col-12">
+                                @if (session('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('success') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center">
+                            <div class="col-12 col-md-7">
+                                <div class="custom-control custom-radio">
+                                    <label class="label_float"> ชื่อผู้ให้ข้อมูล : </label>
+                                    <span>
+                                        <input type="text" class="form-control" id="goals_14s_at_name"
+                                            name="goals_14s_at_name" placeholder="ชื่อผู้ใช้ข้อมูล" required autofocus>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center">
+                            <div class="col-12 col-md-7">
+                                <div class="custom-control custom-radio">
+                                    <label class="label_float"> สถานที่สอบถามข้อมูล : </label>
+                                    <span>
+                                        <input type="text" class="form-control" id="goals_14s_address"
+                                            name="goals_14s_address" placeholder="สถานที่สอบถามข้อมูล" required
+                                            autofocus> </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center">
+                            <div class="col-12 col-md-7">
+                                <div class="custom-control custom-radio">
+                                    <label class="label_float"> ปัญหา/อุปสรรค์ : </label>
+                                    <span>
+                                        <textarea type="text" class="form-control" id="goals_14s_problem" rows="3"
+                                            name="goals_14s_problem" placeholder="ปัญหา/อุปสรรค์" required autofocus></textarea>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="col-12">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-bordered">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th align="center" scope="col" style="width: 100px;">
+                                            <center>ตัวชี้วัด</center>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="screen" style="white-space: normal; ">1. การประเมินประสิทธิภาพขององค์กรปกครองส่วนท้องถิ่น (LPA)
+                                    <tr>
+                                        <td>
+                                            <center>
+                                                <input type="radio" name="goals_14s_indicators_1" value="high" checked
+                                                    required>
+                                                <label>สูงกว่ามาตรฐาน</label>
+                                                <input type="radio" name="goals_14s_indicators_1" value="standard"
+                                                    required>
+                                                <label>มาตรฐาน</label> <br>
+                                                <input type="radio" name="goals_14s_indicators_1" value="low" required>
+                                                <label>ต่ำกว่ามาตรฐาน</label>
+                                                <input type="radio" name="goals_14s_indicators_1" value="none" required>
+                                                <label>ไม่มีข้อมูล</label>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            อ้างอิง หลักฐานประกอบ
+                                            <input type="file" class="form-control " name="goals_14s_indicators_1_refer"
+                                                id="goals_14s_indicators_1_refer" accept="image/*,.pdf,.docx,.xlsx" />
+                                            <div id="goals_14s_indicators_1_refer_file"></div>
+                                        </td>
+                                    </tr>
+                                    </td>
+                                    </tr>
+
+
+
+
+
+                                    <tr class="border_top">
+                                        <td class="screen" style="white-space: normal; ">2. แบบประเมินศักยภาพศูนย์ยุติธรรมชุมชน ครัวเรือนยากจน ผู้ว่างงาน ผู้สูงอายุ ใช้ประโยชน์ และได้รับการดูแลกรณีเกิดข้อพิพาทที่เกี่ยวข้องกับกฎหมาย
+                                    <tr>
+                                        <td>
+                                            <center>
+                                                <input type="radio" name="goals_14s_indicators_2" value="high" checked
+                                                    required>
+                                                <label>สูงกว่ามาตรฐาน</label>
+                                                <input type="radio" name="goals_14s_indicators_2" value="standard"
+                                                    required>
+                                                <label>มาตรฐาน</label> <br>
+                                                <input type="radio" name="goals_14s_indicators_2" value="low" required>
+                                                <label>ต่ำกว่ามาตรฐาน</label>
+                                                <input type="radio" name="goals_14s_indicators_2" value="none" required>
+                                                <label>ไม่มีข้อมูล</label>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            อ้างอิง หลักฐานประกอบ
+                                            <input type="file" class="form-control " name="goals_14s_indicators_2_refer"
+                                                id="goals_14s_indicators_2_refer" accept="image/*,.pdf,.docx,.xlsx" />
+                                            <div id="goals_14s_indicators_2_refer_file"></div>
+                                        </td>
+                                    </tr>
+                                    </td>
+                                    </tr>
+
+
+
+                                    <tr class="border_top">
+                                        <td class="screen" style="white-space: normal; ">3. ประชากรกลุ่มเปราะบางได้รับการเฝ้าระวังการถูกกระทำความรุนแรง
+                                    <tr>
+                                        <td>
+                                            <center>
+                                                <input type="radio" name="goals_14s_indicators_3" value="high" checked
+                                                    required>
+                                                <label>สูงกว่ามาตรฐาน</label>
+                                                <input type="radio" name="goals_14s_indicators_3" value="standard"
+                                                    required>
+                                                <label>มาตรฐาน</label> <br>
+                                                <input type="radio" name="goals_14s_indicators_3" value="low" required>
+                                                <label>ต่ำกว่ามาตรฐาน</label>
+                                                <input type="radio" name="goals_14s_indicators_3" value="none" required>
+                                                <label>ไม่มีข้อมูล</label>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            อ้างอิง หลักฐานประกอบ
+                                            <input type="file" class="form-control " name="goals_14s_indicators_3_refer"
+                                                id="goals_14s_indicators_3_refer" accept="image/*,.pdf,.docx,.xlsx" />
+                                            <div id="goals_14s_indicators_3_refer_file"></div>
+                                        </td>
+                                    </tr>
+                                    </td>
+                                    </tr>
+
+
+
+                                    
+
+                                </tbody>
+
+
+
+
+
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th align="center" scope="col" style="width: 100px;">
+                                            <center>งานเด่นที่มีการดำเนินการ</center>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr class="">
+                                        <td class="screen" style="white-space: normal; ">1. พัฒนากระบวนการ ขั้นตอนของศูนย์ไกล่เกลี่ยในการประนีประนอมข้อพิพาทกรณีต่างๆ เช่น ที่ดิน ข้อขัดแย้ง การวิวาท เป็นต้น
+                                    <tr>
+                                        <td>
+                                            <center>
+                                                <input type="radio" name="goals_14s_operation_1" value="yes" checked
+                                                    required>
+                                                <label>มี</label>
+                                                <input type="radio" name="goals_14s_operation_1" value="no" required>
+                                                <label>ไม่มี</label>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            อ้างอิง หลักฐานประกอบ
+                                            <input type="file" class="form-control " name="goals_14s_operation_1_refer"
+                                                id="goals_14s_operation_1_refer" accept="image/*,.pdf,.docx,.xlsx" />
+                                            <div id="goals_14s_operation_1_refer_file"></div>
+                                        </td>
+                                    </tr>
+                                    </td>
+                                    </tr>
+
+
+
+                                    <tr class="border_top">
+                                        <td class="screen" style="white-space: normal; ">2. พัฒนาแผนและการดำเนินการของศูนย์ประสานงานพนักงานคุมประพฤติ ที่ได้รับการฝึกอบรมจากกระทรวง ยุติธรรม
+                                    <tr>
+                                        <td>
+                                            <center>
+                                                <input type="radio" name="goals_14s_operation_2" value="yes" checked
+                                                    required>
+                                                <label>มี</label>
+                                                <input type="radio" name="goals_14s_operation_2" value="no" required>
+                                                <label>ไม่มี</label>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            อ้างอิง หลักฐานประกอบ
+                                            <input type="file" class="form-control " name="goals_14s_operation_2_refer"
+                                                id="goals_14s_operation_2_refer" accept="image/*,.pdf,.docx,.xlsx" />
+                                            <div id="goals_14s_operation_2_refer_file"></div>
+                                        </td>
+                                    </tr>
+                                    </td>
+                                    </tr>
+
+
+
+                                    <tr class="border_top">
+                                        <td class="screen" style="white-space: normal; ">3. กรณีคดียังไม่สิ้นสุดบริการให้คำปรึกษาข้อกฎหมาย กรณีคนยากจนไม่ได้รับความยุติธรรม เช่น การประสานให้ผู้เสียหายขอรับความช่วยเหลือจากกองทุนยุติธรรม เช่น ช่วยค่าจ้างทนายความ เงินประกันตัวชั่วคราว ค่าตรวจพิสูจน์ ค่าธรรมเนียมศาล เป็นต้น
+                                    <tr>
+                                        <td>
+                                            <center>
+                                                <input type="radio" name="goals_14s_operation_3" value="yes" checked
+                                                    required>
+                                                <label>มี</label>
+                                                <input type="radio" name="goals_14s_operation_3" value="no" required>
+                                                <label>ไม่มี</label>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            อ้างอิง หลักฐานประกอบ
+                                            <input type="file" class="form-control " name="goals_14s_operation_3_refer"
+                                                id="goals_14s_operation_3_refer" accept="image/*,.pdf,.docx,.xlsx" />
+                                            <div id="goals_14s_operation_3_refer_file"></div>
+                                        </td>
+                                    </tr>
+                                    </td>
+                                    </tr>
+
+                                    <tr class="border_top">
+                                        <td class="screen" style="white-space: normal; ">4. บริการให้ความรู้ด้านกฎหมายเบื้องต้น และให้คำปรึกษาลูกหนี้ กรณีหนี้นอกระบบ และไม่ได้รับความเป็นธรรม
+                                    <tr>
+                                        <td>
+                                            <center>
+                                                <input type="radio" name="goals_14s_operation_4" value="yes" checked
+                                                    required>
+                                                <label>มี</label>
+                                                <input type="radio" name="goals_14s_operation_4" value="no" required>
+                                                <label>ไม่มี</label>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            อ้างอิง หลักฐานประกอบ
+                                            <input type="file" class="form-control " name="goals_14s_operation_4_refer"
+                                                id="goals_14s_operation_4_refer" accept="image/*,.pdf,.docx,.xlsx" />
+                                            <div id="goals_14s_operation_4_refer_file"></div>
+                                        </td>
+                                    </tr>
+                                    </td>
+                                    </tr>
+
+
+
+                                    <tr class="border_top">
+                                        <td class="screen" style="white-space: normal; ">5. พัฒนาขั้นตอนและกระบวนการดำเนินการแบบมีส่งนร่วมของ OSCC ในการช่วยเหลือเมื่อเกิดการคุกคามหรือถูกกระทำความรุนแรง
+                                    <tr>
+                                        <td>
+                                            <center>
+                                                <input type="radio" name="goals_14s_operation_5" value="yes" checked
+                                                    required>
+                                                <label>มี</label>
+                                                <input type="radio" name="goals_14s_operation_5" value="no" required>
+                                                <label>ไม่มี</label>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            อ้างอิง หลักฐานประกอบ
+                                            <input type="file" class="form-control " name="goals_14s_operation_5_refer"
+                                                id="goals_14s_operation_5_refer" accept="image/*,.pdf,.docx,.xlsx" />
+                                                <div id="goals_14s_operation_5_refer_file"></div>
+                                        </td>
+                                    </tr>
+                                    </td>
+                                    </tr>
+
+
+
+
+
+
+
+
+
+                                    <tr class="border_top">
+                                        <td class="screen" style="white-space: normal; ">6. รณรงค์เรื่องครอบครัวอบอุ่น
+                                    <tr>
+                                        <td>
+                                            <center>
+                                                <input type="radio" name="goals_14s_operation_6" value="yes" checked
+                                                    required>
+                                                <label>มี</label>
+                                                <input type="radio" name="goals_14s_operation_6" value="no" required>
+                                                <label>ไม่มี</label>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            อ้างอิง หลักฐานประกอบ
+                                            <input type="file" class="form-control " name="goals_14s_operation_6_refer"
+                                                id="goals_14s_operation_6_refer" accept="image/*,.pdf,.docx,.xlsx" />
+                                                <div id="goals_14s_operation_6_refer_file"></div>
+                                        </td>
+                                    </tr>
+                                    </td>
+                                    </tr>
+
+
+
+                                   
+                                 
+
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                        <div class="row m-5">
+                            <div class="col-1 col-md-4 ">
+                            </div>
+                            <div class="col-8 col-md-4 ">
+                                <input type="hidden" name="goals_14s_refer" value="{{$round}}">
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">ส่งแบบสำรวจ</button>
+                            </div>
+                            <div class="ccol-1 ol-md-4 ">
+                            </div>
+                        </div>
+    </form>
+
+
+</div>
+</div>
+</div>
+</div>
+
+@include('layouts.footers.auth')
+</div>
+
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+
+        window.setTimeout(function () {
+            $(".alert").fadeTo(500, 0).slideUp(500, function () {
+                $(this).remove();
+            });
+        }, 2000);
+
+
+
+    });
+
+</script>
+
+@endsection
+
+@push('js')
+<script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
+<script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
+@endpush
